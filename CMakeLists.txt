@@ -3,7 +3,7 @@ project(WindowsTest)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_executable(WindowsTest main.cpp)
+add_subdirectory(src)
 
 if (MSVC)
     target_link_options(WindowsTest PRIVATE /SUBSYSTEM:WINDOWS)
