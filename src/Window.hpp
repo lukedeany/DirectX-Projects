@@ -1,12 +1,8 @@
-﻿//
-// Created by datae on 7/19/2026.
-//
-
-#ifndef WINDOWSTEST_WINDOW_HPP
+﻿#ifndef WINDOWSTEST_WINDOW_HPP
 #define WINDOWSTEST_WINDOW_HPP
 #include <D2DBaseTypes.h>
 
-template <class DERIVED_TYPE>
+template<class DERIVED_TYPE>
 class Window {
 public:
     virtual ~Window() = default;
@@ -27,13 +23,13 @@ public:
 
         if (pThis) {
             return pThis->HandleMessage(uMsg, wParam, lParam);
-        }
-        else {
+        } else {
             return DefWindowProc(hwnd, uMsg, wParam, lParam);
         }
     }
 
-    Window() : m_hwnd(nullptr) {}
+    Window() : m_hwnd(nullptr) {
+    }
 
     BOOL Create(
         LPCWSTR lpWindowName,
@@ -45,26 +41,26 @@ public:
         int nHeight = CW_USEDEFAULT,
         HWND hWndParent = nullptr,
         HMENU hMenu = nullptr
-        ) {
+    ) {
         WNDCLASSW wc = {0};
 
-        wc.lpfnWndProc      = DERIVED_TYPE::WindowProc;
-        wc.hInstance        = GetModuleHandle(nullptr);
-        wc.lpszClassName    = ClassName();
+        wc.lpfnWndProc = DERIVED_TYPE::WindowProc;
+        wc.hInstance = GetModuleHandle(nullptr);
+        wc.lpszClassName = ClassName();
 
         RegisterClassW(&wc);
 
-        m_hwnd = CreateWindowExW(dwExStyle, ClassName(), lpWindowName, dwStyle, x,y,nWidth,nHeight,hWndParent,hMenu,GetModuleHandle(nullptr), this);
+        m_hwnd = CreateWindowExW(dwExStyle, ClassName(), lpWindowName, dwStyle, x, y, nWidth, nHeight, hWndParent,
+                                 hMenu,GetModuleHandle(nullptr), this);
 
         return (m_hwnd ? TRUE : FALSE);
     }
 
-    HWND GetWindow() const {return m_hwnd;}
-
+    HWND GetWindow() const { return m_hwnd; }
 
 protected:
-
     virtual LPCWSTR ClassName() const = 0;
+
     virtual LRESULT HandleMessage(UINT uMsg, WPARAM wParam, LPARAM lParam) = 0;
 
     HWND m_hwnd;

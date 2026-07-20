@@ -1,8 +1,4 @@
-﻿//
-// Created by datae on 7/19/2026.
-//
-
-#include "MainWindow.hpp"
+﻿#include "MainWindow.hpp"
 
 LRESULT MainWindow::HandleMessage(UINT uMsg, WPARAM wParam, LPARAM lParam) {
     switch (uMsg) {
@@ -14,14 +10,11 @@ LRESULT MainWindow::HandleMessage(UINT uMsg, WPARAM wParam, LPARAM lParam) {
         }
     }
 
-    return DefWindowProc(m_hwnd, uMsg, wParam, lParam);
-;
+    return DefWindowProc(m_hwnd, uMsg, wParam, lParam);;
 }
 
 void MainWindow::OnPrint(UINT uMsg, WPARAM wParam, LPARAM lParam) {
-
 }
 
 MainWindow::MainWindow() {
-
 }
