@@ -57,6 +57,7 @@ public:
     }
 
     HWND GetWindow() const { return m_hwnd; }
+    virtual void Render() = 0;
 
 protected:
     virtual LPCWSTR ClassName() const = 0;
