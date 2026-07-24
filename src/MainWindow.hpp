@@ -1,6 +1,7 @@
 ﻿#ifndef WINDOWSTEST_MAINWINDOW_HPP
 #define WINDOWSTEST_MAINWINDOW_HPP
 #include <d3d11.h>
+#include <d3d11_1.h>
 #include <d3dcommon.h>
 
 #include "Window.hpp"
@@ -22,7 +23,11 @@ public:
 private:
     D3D_DRIVER_TYPE m_driverType {D3D_DRIVER_TYPE_NULL};
     ID3D11Device* m_pd3dDevice;
+    ID3D11Device1* m_p3dDevice1;
     ID3D11DeviceContext* m_pImmediateContext;
+    IDXGISwapChain* m_pSwapChain;
+    IDXGISwapChain1* m_pSwapChain1;
+    ID3D11RenderTargetView* m_pRenderTargetView;
     D3D_FEATURE_LEVEL m_featureLevel {D3D_FEATURE_LEVEL_11_0};
 };
 
